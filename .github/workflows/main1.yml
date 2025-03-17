@@ -9,10 +9,10 @@ jobs:
 
   steps:
   - name: Checkout code        # will start by checking the code.
-    uses: actions/checkout@v2  # Checks out our repository code.
+    uses: actions/checkout@v4  # Checks out our repository code.
 
   - name: Set up python # As no tools are pre-installed, we need to install python.We need python because bandit is a python package.
-    uses: actions/setup-python@v2 #
+    uses: actions/setup-python@v4 
     with: 
       python-version: 3.8 #sets up the python version 3.8.
 
