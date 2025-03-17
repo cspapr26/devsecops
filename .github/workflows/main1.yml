@@ -23,7 +23,7 @@ jobs:
     run: bandit -ll -ii -r . -f json --output bandit-report.json  # scans everything in current folder.
 
   - name: Upload Artifact
-    uses: actions/upload-artifact@v3
+    uses: actions/upload-artifact@v4
     if: always()     # this step will always execute even if any one of the precious step fails.
     with:
      name: bandit-findings
