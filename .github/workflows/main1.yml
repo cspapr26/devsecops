@@ -1,0 +1,25 @@
+name: CI
+
+on: [push] #This pipleline will get triggered on push (or) whenever there is a push in the repository, no matter which branch 
+           # that is we always want to run this pipeline.
+jobs:
+ sast_scan: #sast scan or sast security job.
+  name: Run Bandit scan   # we are running bandit scan.
+  runs-on: ubuntu-latest  # Run bandit on ubuntu machine.
+
+  steps:
+  - name: Checkout code        # will start by checking the code.
+    uses: actions/checkout@v2  # Checks out our repository code.
+
+  - name: Set up python # As no tools are pre-installed, we need to install python.We need python because bandit is a python package.
+    uses: actions/setup-python@v2 #
+    with: 
+      python-version: 3.8 #sets up the python version 3.8.
+
+  - name: Install bandit   # Installing bandit tool.
+    run: pip install bandit
+
+  - name: Run Bandit scan   # execute scan using bandit tool.
+    run: bandit -r .        # scans everything in current folder.
+  
+  
